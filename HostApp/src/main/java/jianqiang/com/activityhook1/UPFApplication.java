@@ -3,6 +3,8 @@ package jianqiang.com.activityhook1;
 import android.app.Application;
 import android.content.Context;
 
+import me.weishu.reflection.Reflection;
+
 /**
  * 这个类只是为了方便获取全局Context的.
  *
@@ -17,8 +19,8 @@ public class UPFApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         sContext = base;
+        Reflection.unseal(base);
     }
-
     public static Context getContext() {
         return sContext;
     }

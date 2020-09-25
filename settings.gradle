@@ -1,1 +1,1 @@
-include ':HostApp', ':Plugin1'
+include ':HostApp'

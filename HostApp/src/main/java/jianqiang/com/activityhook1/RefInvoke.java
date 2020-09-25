@@ -2,7 +2,6 @@ package jianqiang.com.activityhook1;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class RefInvoke {
@@ -15,7 +14,7 @@ public class RefInvoke {
         try {
             Class r = Class.forName(className);
             return createObject(r, pareTyples, pareVaules);
-        } catch (ClassNotFoundException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 
@@ -34,11 +33,11 @@ public class RefInvoke {
     public static Object createObject(String className, Class pareTyple, Object pareVaule) {
         Class[] pareTyples = new Class[]{ pareTyple };
         Object[] pareVaules = new Object[]{ pareVaule };
-
+    
         try {
             Class r = Class.forName(className);
             return createObject(r, pareTyples, pareVaules);
-        } catch (ClassNotFoundException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 
@@ -58,7 +57,7 @@ public class RefInvoke {
         try {
             Class r = Class.forName(className);
             return createObject(r, pareTyples, pareVaules);
-        } catch (ClassNotFoundException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 
@@ -71,7 +70,7 @@ public class RefInvoke {
             Constructor ctor = clazz.getDeclaredConstructor(pareTyples);
             ctor.setAccessible(true);
             return ctor.newInstance(pareVaules);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 
@@ -82,19 +81,18 @@ public class RefInvoke {
 
     //多个参数
     public static Object invokeInstanceMethod(Object obj, String methodName, Class[] pareTyples, Object[] pareVaules) {
-        if (obj == null)
+        if (obj == null) {
             return null;
-
+        }
         try {
             //调用一个private方法
             Method method = obj.getClass().getDeclaredMethod(methodName, pareTyples); //在指定类中获取指定的方法
             method.setAccessible(true);
             return method.invoke(obj, pareVaules);
-
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
-        } 
-
+        }
+    
         return null;
     }
 
@@ -102,7 +100,6 @@ public class RefInvoke {
     public static Object invokeInstanceMethod(Object obj, String methodName, Class pareTyple, Object pareVaule) {
         Class[] pareTyples = {pareTyple};
         Object[] pareVaules = {pareVaule};
-
         return invokeInstanceMethod(obj, methodName, pareTyples, pareVaules);
     }
 
@@ -115,13 +112,10 @@ public class RefInvoke {
     }
 
 
-
-
     //无参
     public static Object invokeStaticMethod(String className, String method_name) {
         Class[] pareTyples = new Class[]{};
         Object[] pareVaules = new Object[]{};
-
         return invokeStaticMethod(className, method_name, pareTyples, pareVaules);
     }
 
@@ -138,10 +132,9 @@ public class RefInvoke {
         try {
             Class obj_class = Class.forName(className);
             return invokeStaticMethod(obj_class, method_name, pareTyples, pareVaules);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -167,7 +160,7 @@ public class RefInvoke {
             Method method = clazz.getDeclaredMethod(method_name, pareTyples);
             method.setAccessible(true);
             return method.invoke(null, pareVaules);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 

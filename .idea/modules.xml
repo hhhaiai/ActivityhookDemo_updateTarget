@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ActivityHook2.iml" filepath="$PROJECT_DIR$/ActivityHook2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HostApp/HostApp.iml" filepath="$PROJECT_DIR$/HostApp/HostApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Plugin1/Plugin1.iml" filepath="$PROJECT_DIR$/Plugin1/Plugin1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HostApp/HostApp.iml" filepath="$PROJECT_DIR$/.idea/modules/HostApp/HostApp.iml" group="ah/HostApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ah.iml" filepath="$PROJECT_DIR$/.idea/modules/ah.iml" group="ah" />
     </modules>
   </component>
 </project>
